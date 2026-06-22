@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerForge</title>
+    <link rel="stylesheet" href="home-style.css">
+    
+
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a class="logo" href="index.html"><span id="career">Career</span><span id="forge">Forge</span></a>
+        </div>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="resources.html">Resources</a>
+        </nav>
+
+    </header>
+
+    <div class="hero-split">
+        <div class="hero-text">
+            <h1 id="heroTitle">Find Your Ideal Career Path.</h1>
+
+            <p id="heroSubtitle">
+                Enter your interests, skills and goals to generate
+                a personalized career roadmap using AI.
+            </p>
+        </div>
+
+        <div class="hero-form-wrap">
+            <div class="form-card" id="formSection">
+                <form id="careerForm">
+                    <div>
+                        <label
+                            style="font-size:0.85rem; font-weight:600; color:#475569; margin-bottom:6px; display:block;">Name</label>
+                        <input class="input" type="text" id="name" placeholder="Enter your name" required>
+                    </div>
+                    <div>
+                        <label
+                            style="font-size:0.85rem; font-weight:600; color:#475569; margin-bottom:6px; display:block;">Education
+                            Level</label>
+                        <select id="education" required>
+
+                            <option value="">Select education level</option>
+
+                            <optgroup label="School">
+
+                                <option>8th</option>
+
+                                <option>9th</option>
+
+                                <option>10th</option>
+
+                                <option>11th</option>
+
+                                <option>12th</option>
+
+                            </optgroup>
+
+                            <optgroup label="Diploma & Vocational">
+
+                                <option>Diploma</option>
+
+                                <option>ITI</option>
+
+                            </optgroup>
+
+                            <optgroup label="Undergraduate">
+
+                                <option>B.Tech</option>
+
+                                <option>BE</option>
+
+                                <option>BCA</option>
+
+                                <option>BSc</option>
+
+                                <option>BCom</option>
+
+                                <option>BA</option>
+
+                                <option>BBA</option>
+
+                                <option>B.Des</option>
+
+                                <option>B.Arch</option>
+
+                                <option>B.Pharm</option>
+
+                                <option>MBBS</option>
+
+                                <option>BDS</option>
+
+                                <option>LLB</option>
+
+                            </optgroup>
+
+                            <optgroup label="Postgraduate">
+
+                                <option>M.Tech</option>
+
+                                <option>MCA</option>
+
+                                <option>MSc</option>
+
+                                <option>MCom</option>
+
+                                <option>MA</option>
+
+                                <option>MBA</option>
+
+                                <option>LLM</option>
+
+                            </optgroup>
+
+                            <optgroup label="Advanced">
+
+                                <option>PhD</option>
+
+                                <option>Working Professional</option>
+
+                                <option>Career Switcher</option>
+
+                                <option>Other</option>
+
+                            </optgroup>
+
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            style="font-size:0.85rem; font-weight:600; color:#475569; margin-bottom:6px; display:block;">Interests</label>
+                        <textarea id="interests" rows="3" placeholder="e.g. Coding, Design, Music" required></textarea>
+                    </div>
+                    <div>
+                        <label
+                            style="font-size:0.85rem; font-weight:600; color:#475569; margin-bottom:6px; display:block;">Current
+                            Skills</label>
+                        <textarea id="skills" rows="3" placeholder="e.g. Video Editing, Coding, Singing" required></textarea>
+                    </div>
+                    <div>
+                        <label
+                            style="font-size:0.85rem; font-weight:600; color:#475569; margin-bottom:6px; display:block;">Career
+                            Goal</label>
+                        <textarea id="goal" rows="3" placeholder="e.g. to become a software engineer"
+                            required></textarea>
+                    </div>
+                    <button type="submit">Generate Roadmap</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div id="error"></div>
+
+        <div id="loading">
+            <div class="loading-card">
+                <div class="loading-ring">
+                    <span class="loading-icon">⏱️</span>
+                </div>
+                <h3 id="loadingTitle">Understanding your goals...</h3>
+                <ul class="loading-steps">
+                    <li><span class="step-dot"></span>Understanding your goals</li>
+                    <li><span class="step-dot"></span>Matching career paths</li>
+                    <li><span class="step-dot"></span>Building your roadmap</li>
+                    <li><span class="step-dot"></span>Curating resources</li>
+                </ul>
+                <div class="loading-progress">
+                    <div class="loading-progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="results">
+            <div class="card hero-card">
+                <span class="eyebrow">🎯 Recommended Career</span>
+                <h2 id="career" class="hero-career"></h2>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">💡</span>
+                    <h2>Why It Fits You Perfectly</h2>
+                </div>
+                <p id="why"></p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🗺️</span>
+                    <h2>Roadmap For Learning New Skills</h2>
+                </div>
+                <ol class="timeline" id="roadmap"></ol>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🛠️</span>
+                    <h2>Skills To Learn</h2>
+                </div>
+                <div class="skill-tags" id="skillsList"></div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">📚</span>
+                    <h2>Resources</h2>
+                </div>
+                <ul class="resource-list" id="resources"></ul>
+            </div>
+        </div>
+        <div
+            style="display: flex; flex-direction: row; gap: 16px; justify-content: center; flex-wrap: wrap; margin: 30px auto 40px; max-width: 820px;">
+            <button id="retakeBtn" style="display: none; flex: 1 1 200px; max-width: 380px; padding: 16px; font-size: 1.1rem; font-weight: bold; color: white; 
+               background: linear-gradient(135deg, #2563eb, #0891b2); 
+               border: none; border-radius: 12px; cursor: pointer; 
+               box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);">
+                🔄 Retake the Test
+            </button>
+
+            <button id="goToResourcesBtn" style="display: none; flex: 1 1 200px; max-width: 380px; padding: 16px; font-size: 1.1rem; font-weight: bold; color: white; 
+               background: linear-gradient(135deg, #2563eb, #0891b2); 
+               border: none; border-radius: 12px; cursor: pointer; 
+               box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);">
+                📚 View Resources
+            </button>
+        </div>
+    </div>
+
+    <footer>
+        CareerForge © 2026
+    </footer>
+
+    <script src="home-script.js"></script>
+
+</body>
+
+</html>
